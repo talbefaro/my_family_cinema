@@ -5,6 +5,59 @@
     <meta charset="utf-8">
   </head>
   <body>
-    Aqui vai o código HTML que fará seu site aparecer.
+    <form>
+      <label for="ftitle">Título:</label><br>
+      <input type="text" id="ftitle" name="ftitle"><br>
+      <label for="lano">Ano:</label><br>
+      <input type="text" id="lano" name="lano">
+      <button class="favorite styled" type="button" onclick="create()" >Search</button>
+    </form>
+    <table id="moviestable">
+      <tr>
+        <th>Ttitle</th>
+        <th>Year</th>
+      </tr>
+      <tr>
+        <td>Alfreds Futterkiste</td>
+        <td>Maria Anders</td>
+        <td>Germany</td>
+      </tr>
+      <tr>
+        <td>Centro comercial Moctezuma</td>
+        <td>Francisco Chang</td>
+        <td>Mexico</td>
+      </tr>
+    </table>
+
+
+    <script>
+      var movies = [];
+
+      function create() {
+        let title = document.getElementById("ftitle").value
+        let ano = document.getElementById("lano").value
+
+        sendMovieToBackEnd(title, ano)
+        listAllMovie();
+        cleanForm();
+  
+        
+      }
+
+      function  sendMovieToBackEnd(title, ano){
+        let movie = {title: title, year:ano}
+        movies.push(movie)
+      }
+
+      function listAllMovie(){
+        movies.forEach(x => {console.log(x)})
+      }
+
+      function cleanForm(){
+        document.getElementById("ftitle").value = ''
+        document.getElementById("lano").value = ''
+
+      }
+      </script>
   </body>
 </html>
